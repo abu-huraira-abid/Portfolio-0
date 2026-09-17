@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Briefcase, CheckCircle2 } from "lucide-react";
-import { experience } from "../data/portfolio";
+import { experiences } from "../data/portfolio";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -41,59 +41,64 @@ export default function ExperienceSection() {
             />
           </div>
 
-          {/* Experience card */}
-          <div className="relative pl-16 md:pl-20">
-            {/* Timeline dot */}
-            <div className="absolute left-4 top-8 md:left-6">
-              <motion.div
-                className="flex h-5 w-5 items-center justify-center rounded-full bg-[#06060b] border-2 border-[#3b82f6]"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
-              >
-                <div className="h-2 w-2 rounded-full bg-[#3b82f6]" />
-              </motion.div>
-            </div>
-
-            <motion.div
-              className="glass-card p-6 md:p-8"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              whileHover={{ y: -2 }}
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <Briefcase size={18} className="text-[#3b82f6]" />
-                    <h3 className="text-xl font-bold text-white tracking-tight">{experience.role}</h3>
+          <div className="space-y-6">
+            {experiences.map((experience, experienceIndex) => {
+              const isCurrent = experience.status === "Current";
+              return (
+                <div key={experience.role} className="relative pl-16 md:pl-20">
+                  <div className="absolute left-4 top-8 md:left-6">
+                    <motion.div
+                      className={`flex h-5 w-5 items-center justify-center rounded-full bg-[#06060b] border-2 ${isCurrent ? "border-[#3b82f6]" : "border-[#06b6d4]/70"}`}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + experienceIndex * 0.12, type: "spring", stiffness: 300 }}
+                    >
+                      <div className={`h-2 w-2 rounded-full ${isCurrent ? "bg-[#3b82f6]" : "bg-[#06b6d4]"}`} />
+                    </motion.div>
                   </div>
-                  <p className="mt-1.5 text-sm text-[#a0a0b8]">{experience.company} · {experience.location}</p>
-                </div>
-                <span className="flex items-center gap-2 rounded-lg bg-[#3b82f6]/[0.08] px-3 py-1.5 text-xs font-semibold text-[#3b82f6] w-fit">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6] animate-pulse" />
-                  {experience.status}
-                </span>
-              </div>
 
-              <div className="mt-6 space-y-3">
-                {experience.bullets.map((bullet, i) => (
                   <motion.div
-                    key={i}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -10 }}
+                    className={`glass-card p-6 md:p-8 ${isCurrent ? "border-[#3b82f6]/20" : ""}`}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.08 }}
+                    transition={{ delay: 0.1 + experienceIndex * 0.1, duration: 0.6 }}
+                    whileHover={{ y: -2 }}
                   >
-                    <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#06b6d4]" />
-                    <p className="text-[14px] leading-relaxed text-[#a0a0b8]">{bullet}</p>
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <div className="flex items-center gap-3">
+                          <Briefcase size={18} className="text-[#3b82f6]" />
+                          <h3 className="text-xl font-bold tracking-tight text-white">{experience.role}</h3>
+                        </div>
+                        <p className="mt-1.5 text-sm text-[#a0a0b8]">{experience.company} · {experience.location}</p>
+                      </div>
+                      <div className="flex w-fit items-center gap-2 rounded-lg bg-[#3b82f6]/[0.08] px-3 py-1.5 text-xs font-semibold text-[#60a5fa]">
+                        {isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6] animate-pulse" />}
+                        {experience.dates}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 space-y-3">
+                      {experience.bullets.map((bullet, bulletIndex) => (
+                        <motion.div
+                          key={bullet}
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.2 + experienceIndex * 0.1 + bulletIndex * 0.08 }}
+                        >
+                          <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#06b6d4]" />
+                          <p className="text-[14px] leading-relaxed text-[#a0a0b8]">{bullet}</p>
+                        </motion.div>
+                      ))}
+                    </div>
                   </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

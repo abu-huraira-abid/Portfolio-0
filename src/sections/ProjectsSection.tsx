@@ -23,6 +23,16 @@ const gradients = [
   "linear-gradient(135deg, #0a0f1a 0%, #201632 40%, #0a0f1a 100%)",
 ];
 
+// Keep existing image filenames flexible while allowing future images to use the exact project name.
+const projectImagePaths: Record<string, string> = {
+  PostVault: "/projects/post vault.png",
+  Optilicious: "/projects/optilicious.png",
+  Bokado: "/projects/bokado.png",
+  SymphonyMusic: "/projects/symphony music.png",
+  CRM: "/projects/crm.png",
+  "Company House": "/projects/company House.png",
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const } },
@@ -32,6 +42,8 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
   const reduceMotion = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
   const [spotlight, setSpotlight] = useState({ x: 50, y: 50, opacity: 0 });
+  const [hasPreviewImage, setHasPreviewImage] = useState(true);
+  const previewImage = projectImagePaths[project.name] ?? `/projects/${project.name}.png`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -44,7 +56,7 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
   return (
     <motion.div
       ref={cardRef}
-      className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0c0c14] transition-all duration-300 hover:border-white/[0.12]"
+      className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0c0c14] transition-all duration-300 hover:border-white/[0.12]"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setSpotlight((s) => ({ ...s, opacity: 0 }))}
       initial={{ opacity: 0, y: 30 }}
@@ -67,7 +79,17 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
       />
 
       {/* Abstract visual */}
-      <div className="relative h-44 overflow-hidden" style={{ background: gradients[index % gradients.length] }}>
+      <div className="relative h-64 overflow-hidden" style={{ background: gradients[index % gradients.length] }}>
+        {hasPreviewImage && (
+          <img
+            src={previewImage}
+            alt={`${project.name} project preview`}
+            className="project-preview-image"
+            loading="lazy"
+            onError={() => setHasPreviewImage(false)}
+          />
+        )}
+        {hasPreviewImage && <div className="project-preview-overlay" aria-hidden="true" />}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-5 right-5 h-20 w-20 rounded-full"
             style={{ background: `radial-gradient(circle, ${categoryColors[project.category]}30, transparent)` }} />
@@ -140,7 +162,9 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  const filtered = activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter);
+  const filtered = (activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter))
+    .slice()
+    .sort((first, second) => Number(Boolean(projectImagePaths[second.name])) - Number(Boolean(projectImagePaths[first.name])));
   const displayed = showAll ? filtered : filtered.slice(0, 6);
 
   return (

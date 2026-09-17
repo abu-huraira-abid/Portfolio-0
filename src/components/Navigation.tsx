@@ -35,7 +35,7 @@ export default function Navigation() {
               <motion.a
                 key={link.href}
                 href={link.href}
-                className={`relative rounded-lg px-3 py-2 text-[13px] font-medium transition-colors ${
+                className={`nav-link-glow relative rounded-lg px-3 py-2 text-[13px] font-medium transition-colors ${
                   isActive ? "text-white" : "text-[#5a5a72] hover:text-[#a0a0b8]"
                 }`}
                 whileHover={{ scale: 1.05 }}

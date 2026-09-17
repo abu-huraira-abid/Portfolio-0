@@ -75,6 +75,7 @@ export interface Experience {
   company: string;
   role: string;
   location: string;
+  dates: string;
   status: string;
   bullets: string[];
 }
@@ -90,7 +91,7 @@ export const personalInfo: PersonalInfo = {
   linkedin: "https://linkedin.com/in/abu-huraira-abid",
   github: "https://github.com/abu-huraira-abid",
   summary:
-    "Full-Stack Software Engineer and current Lead Software Engineer with 3+ years of professional software development experience across React/Next.js, Django/Python, Laravel/PHP, Node.js, REST APIs and React Native. Builds and supports production web and mobile applications, database-backed features, authentication flows and third-party integrations. Hands-on with Stripe, Xero, Open Food Facts, CRM integrations, webhooks, Docker, Nginx, Linux, CI/CD, AWS and modern deployment platforms. Also develops n8n-based AI automation workflows including voice-call assistants, AI agents, CRM automation and business-process automation.",
+    "Lead Software Engineer at MAXOBIZ with 3+ years of experience delivering production web and mobile applications, backend APIs and automation solutions. Experienced across React/Next.js, Django/Python, Laravel/PHP, Node.js, React Native and SQL, with hands-on ownership of authentication, webhooks, third-party integrations and deployment workflows. Builds practical n8n-powered AI automation, including voice-call assistants, AI agents, CRM automation and business-process workflows.",
   experience: "3+ years",
   education: [
     {
@@ -297,19 +298,45 @@ export const achievements: Achievement[] = [
   { id: "a005", title: "Automation to AI Agents: Advanced Course Completed" },
 ];
 
-export const experience: Experience = {
-  company: "MAXOBIZ",
-  role: "Lead Software Engineer",
-  location: "Lahore, Pakistan",
-  status: "Current",
-  bullets: [
-    "Deliver full-stack features across frontend UI development, backend/API development, database-backed functionality and third-party integrations.",
-    "Build and integrate REST APIs, authentication flows, webhooks and external services, including Stripe, Xero and Open Food Facts.",
-    "Develop and support React Native mobile applications for iOS and Android.",
-    "Create n8n-based AI automation workflows including voice-call assistants, AI agents, CRM management and business-process automation.",
-    "Debug application issues, improve performance and support deployment workflows using Git/GitHub, Docker, Nginx, Linux, CI/CD and cloud/deployment platforms.",
-  ],
-};
+export const experiences: Experience[] = [
+  {
+    company: "MAXOBIZ",
+    role: "Lead Software Engineer",
+    location: "Lahore, Pakistan",
+    dates: "May 2026 – Present",
+    status: "Current",
+    bullets: [
+      "Lead end-to-end delivery of full-stack features across frontend UI, backend APIs, database functionality and third-party integrations.",
+      "Build and integrate REST APIs, authentication flows, webhooks and external services, including Stripe, Xero and Open Food Facts.",
+      "Develop n8n-based AI automation workflows, including voice-call assistants, AI agents, CRM management and business-process automation.",
+      "Improve reliability and deployment workflows through debugging, performance work, Docker, Nginx, Linux, CI/CD and cloud platforms.",
+    ],
+  },
+  {
+    company: "MAXOBIZ",
+    role: "Associate Software Engineer",
+    location: "Lahore, Pakistan",
+    dates: "Oct 2025 – May 2026",
+    status: "Completed",
+    bullets: [
+      "Delivered full-stack features across responsive frontend interfaces, backend APIs and database-backed functionality.",
+      "Implemented REST APIs, authentication flows, webhooks and third-party integrations for production applications.",
+      "Contributed to web and mobile solutions using React, Django, Laravel, Node.js and React Native.",
+    ],
+  },
+  {
+    company: "MAXOBIZ",
+    role: "Software Engineering Intern",
+    location: "Lahore, Pakistan",
+    dates: "Jul 2025 – Oct 2025",
+    status: "Completed",
+    bullets: [
+      "Built a strong full-stack foundation by contributing to production web applications and learning established development workflows.",
+      "Supported frontend, backend and database tasks across the React, Node.js, Django and SQL ecosystem.",
+      "Collaborated on debugging, feature implementation and version-controlled delivery using Git and GitHub.",
+    ],
+  },
+];
 
 export const navLinks = [
   { label: "Home", href: "#home" },

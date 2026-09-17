@@ -38,10 +38,10 @@ export default function AboutSection() {
 
           <div className="grid gap-12 lg:grid-cols-5">
             <motion.div variants={fadeUp} className="lg:col-span-3 space-y-5">
-              <p className="text-[15px] leading-[1.8] text-[#a0a0b8]">
+              <p className="text-[18px] leading-[1.8] text-[#a0a0b8]">
                 {personalInfo.summary}
               </p>
-              <p className="text-[15px] leading-[1.8] text-[#5a5a72]">
+              <p className="text-[18px] leading-[1.8] text-[#5a5a72]">
                 Specializing in end-to-end product development — from pixel-perfect
                 frontend interfaces to scalable backend architectures. Passionate about
                 AI-powered automation and building tools that solve real problems.
