@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, CheckCircle, AlertCircle, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, ArrowUpRight } from "lucide-react";
 import { personalInfo } from "../data/portfolio";
 import { Github, Linkedin } from "../components/Icons";
 
@@ -75,6 +75,15 @@ export default function ContactSection() {
           <div className="grid gap-10 lg:grid-cols-5">
             {/* Contact Info */}
             <motion.div variants={fadeUp} className="lg:col-span-2 space-y-4">
+              <div className="glass-card flex items-center gap-4 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#3b82f6]/[0.08] text-[#3b82f6]">
+                  <MapPin size={18} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#5a5a72]">Location &amp; Availability</p>
+                  <p className="text-sm font-medium text-[#f0f0f5]">{personalInfo.location}</p>
+                </div>
+              </div>
               {[
                 { icon: <Mail size={18} />, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
                 { icon: <Phone size={18} />, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, "")}` },

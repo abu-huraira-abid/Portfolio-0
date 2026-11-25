@@ -4,14 +4,14 @@ import { ExternalLink, ArrowUpRight, Filter } from "lucide-react";
 import ProjectDetails from "../components/ProjectDetails";
 import { projects, type Project, type ProjectCategory } from "../data/portfolio";
 
-const categories: ProjectCategory[] = ["Full-Stack", "Frontend", "AI Automation", "Integrations", "Mobile"];
+const categories: ProjectCategory[] = ["AI Automation", "Full-Stack", "Frontend", "Mobile", "Integrations"];
 
 const categoryColors: Record<ProjectCategory, string> = {
+  "AI Automation": "#ec4899",
   "Full-Stack": "#3b82f6",
   Frontend: "#06b6d4",
-  "AI Automation": "#ec4899",
-  Integrations: "#f59e0b",
   Mobile: "#10b981",
+  Integrations: "#f59e0b",
 };
 
 const gradients = [
@@ -162,9 +162,7 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  const filtered = (activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter))
-    .slice()
-    .sort((first, second) => Number(Boolean(projectImagePaths[second.name])) - Number(Boolean(projectImagePaths[first.name])));
+  const filtered = activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter);
   const displayed = showAll ? filtered : filtered.slice(0, 6);
 
   return (

@@ -13,11 +13,11 @@ const stagger = {
 };
 
 const quickFacts = [
-  { icon: <MapPin size={18} />, label: "Location", value: personalInfo.location },
+  { icon: <MapPin size={18} />, label: "Location & Availability", value: personalInfo.location },
   { icon: <Briefcase size={18} />, label: "Experience", value: personalInfo.experience },
-  { icon: <Code2 size={18} />, label: "Current Role", value: "Lead Software Engineer" },
+  { icon: <Code2 size={18} />, label: "Current Role", value: `${personalInfo.currentRole} (${personalInfo.currentCompany})` },
   { icon: <GraduationCap size={18} />, label: "Education", value: `${personalInfo.education[0].degree} — ${personalInfo.education[0].field}` },
-  { icon: <Calendar size={18} />, label: "Graduation", value: personalInfo.education[0].year },
+  { icon: <Calendar size={18} />, label: "Completed", value: `${personalInfo.education[0].institution} (${personalInfo.education[0].year})` },
   { icon: <Globe size={18} />, label: "Languages", value: personalInfo.languages.map((l) => l.name).join(", ") },
 ];
 
@@ -42,9 +42,9 @@ export default function AboutSection() {
                 {personalInfo.summary}
               </p>
               <p className="text-[18px] leading-[1.8] text-[#5a5a72]">
-                Specializing in end-to-end product development — from pixel-perfect
-                frontend interfaces to scalable backend architectures. Passionate about
-                AI-powered automation and building tools that solve real problems.
+                Focused on translating business requirements into maintainable
+                applications that connect Python backend systems, React &amp; Next.js
+                user experiences, and AI-powered automation workflows.
               </p>
             </motion.div>
 

@@ -69,18 +69,33 @@ export default function ExperienceSection() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <div className="flex items-center gap-3">
-                          <Briefcase size={18} className="text-[#3b82f6]" />
+                          <Briefcase size={18} className="shrink-0 text-[#3b82f6]" />
                           <h3 className="text-xl font-bold tracking-tight text-white">{experience.role}</h3>
                         </div>
-                        <p className="mt-1.5 text-sm text-[#a0a0b8]">{experience.company} · {experience.location}</p>
+                        <p className="mt-1.5 text-sm font-medium text-[#a0a0b8]">
+                          {experience.company} · {experience.employmentType}
+                        </p>
+                        <p className="mt-1 text-xs text-[#7c7c96]">
+                          {[experience.location, experience.workMode].filter(Boolean).join(" · ")}
+                        </p>
                       </div>
-                      <div className="flex w-fit items-center gap-2 rounded-lg bg-[#3b82f6]/[0.08] px-3 py-1.5 text-xs font-semibold text-[#60a5fa]">
-                        {isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6] animate-pulse" />}
-                        {experience.dates}
+                      <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+                        <span className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-2.5 py-1.5 text-xs font-medium text-[#a0a0b8]">
+                          {experience.workMode}
+                        </span>
+                        <div className="flex w-fit items-center gap-2 rounded-lg bg-[#3b82f6]/[0.08] px-3 py-1.5 text-xs font-semibold text-[#60a5fa]">
+                          {isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6] animate-pulse" />}
+                          <span>{experience.dates}</span>
+                          <span className="text-[#60a5fa]/70">· {experience.duration}</span>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="mt-6 space-y-3">
+                    <p className="mt-5 text-[14px] leading-relaxed text-[#d0d0e0]">
+                      {experience.overview}
+                    </p>
+
+                    <div className="mt-5 space-y-3">
                       {experience.bullets.map((bullet, bulletIndex) => (
                         <motion.div
                           key={bullet}

@@ -1,32 +1,30 @@
 import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import {
-  Code2, Server, Link, Smartphone, Database, Brain, Cloud, Wrench,
+  Code2, Server, Workflow, Smartphone, Database, Brain, Cloud,
 } from "lucide-react";
 import { skills, skillCategories, type SkillCategory } from "../data/portfolio";
 
 const SkillGalaxy = lazy(() => import("../components/3d/SkillGalaxy"));
 
 const categoryIcons: Record<SkillCategory, React.ReactNode> = {
-  "Frontend Engineering": <Code2 size={16} />,
-  "Backend Engineering": <Server size={16} />,
-  "APIs & Integrations": <Link size={16} />,
-  "Mobile Development": <Smartphone size={16} />,
-  Database: <Database size={16} />,
-  "AI & Automation": <Brain size={16} />,
-  "Cloud & Deployment": <Cloud size={16} />,
-  "Development Tools": <Wrench size={16} />,
+  "Python & Backend": <Server size={16} />,
+  "AI, GenAI & RAG": <Brain size={16} />,
+  "Frontend (React & Next.js)": <Code2 size={16} />,
+  "Workflow Automation": <Workflow size={16} />,
+  "Databases & Async": <Database size={16} />,
+  "Cloud, DevOps & Testing": <Cloud size={16} />,
+  "Mobile & Secondary": <Smartphone size={16} />,
 };
 
 const categoryColors: Record<SkillCategory, string> = {
-  "Frontend Engineering": "#3b82f6",
-  "Backend Engineering": "#06b6d4",
-  "APIs & Integrations": "#8b5cf6",
-  "Mobile Development": "#10b981",
-  Database: "#f59e0b",
-  "AI & Automation": "#ec4899",
-  "Cloud & Deployment": "#14b8a6",
-  "Development Tools": "#6366f1",
+  "Python & Backend": "#06b6d4",
+  "AI, GenAI & RAG": "#8b5cf6",
+  "Frontend (React & Next.js)": "#3b82f6",
+  "Workflow Automation": "#ec4899",
+  "Databases & Async": "#f59e0b",
+  "Cloud, DevOps & Testing": "#14b8a6",
+  "Mobile & Secondary": "#6366f1",
 };
 
 const fadeUp = {
@@ -59,7 +57,7 @@ export default function SkillsSection() {
             Technical <span className="gradient-text">Expertise</span>
           </h2>
           <p className="mt-3 max-w-lg text-[15px] text-[#5a5a72]">
-            Technologies I use to build production software and AI automation.
+            Centered on Python backend engineering, Generative AI &amp; RAG, React/Next.js frontends, and workflow automation.
           </p>
         </motion.div>
 

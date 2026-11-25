@@ -37,7 +37,7 @@ export default function LoadingScreen({ isLoading }: LoadingScreenProps) {
 
             <motion.div className="mt-6 space-y-1.5" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
               <h2 className="text-base font-semibold text-white">Abu Huraira Abid</h2>
-              <p className="text-xs text-[#5a5a72]">Full-Stack Software Engineer</p>
+              <p className="text-xs text-[#5a5a72]">Python Developer | AI Engineer | Full-Stack Developer</p>
             </motion.div>
 
             <motion.div className="mx-auto mt-6 h-px w-40 overflow-hidden rounded-full bg-white/[0.06]"

@@ -17,7 +17,7 @@ const fadeUp = {
 };
 
 const featuredSkills = [
-  "React", "Django", "Node.js", "Laravel", "React Native", "n8n", "PostgreSQL", "TypeScript",
+  "Python", "FastAPI", "Django", "AI Agents & RAG", "LangChain", "React", "Next.js", "n8n",
 ];
 
 export default function HeroSection() {
@@ -47,9 +47,9 @@ export default function HeroSection() {
           </motion.h2>
 
           <motion.p variants={fadeUp} className="max-w-xl text-[15px] leading-relaxed text-[#5a5a72]">
-            Building production web &amp; mobile apps, backend APIs, third-party
-            integrations, and AI automation workflows. Full-stack engineer with{" "}
-            {personalInfo.experience} of professional experience.
+            Senior Full-Stack Engineer with {personalInfo.experience} of experience
+            specializing in Python backends (FastAPI, Django), Generative AI &amp; RAG
+            pipelines, React &amp; Next.js interfaces, and n8n workflow automation.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3">

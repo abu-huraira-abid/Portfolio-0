@@ -1,21 +1,29 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Pause, Play, Code2, Database, Cloud, Workflow, GitBranch, Smartphone, Braces } from "lucide-react";
+import { Pause, Play, Code2, Database, Cloud, Workflow, Smartphone, Braces } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import { type SkillCategory } from "../../data/portfolio";
 
 const categoryColors: Record<SkillCategory, string> = {
-  "Frontend Engineering": "#61dafb", "Backend Engineering": "#6ee7b7",
-  "APIs & Integrations": "#a78bfa", "Mobile Development": "#38bdf8",
-  Database: "#fbbf24", "AI & Automation": "#fb7185",
-  "Cloud & Deployment": "#2dd4bf", "Development Tools": "#a5b4fc",
+  "Python & Backend": "#6ee7b7",
+  "AI, GenAI & RAG": "#a78bfa",
+  "Frontend (React & Next.js)": "#61dafb",
+  "Workflow Automation": "#fb7185",
+  "Databases & Async": "#fbbf24",
+  "Cloud, DevOps & Testing": "#2dd4bf",
+  "Mobile & Secondary": "#38bdf8",
 };
 export interface OrbitItem { name: string; category: SkillCategory; evidence?: string }
 
 function TechMark({ item }: { item: OrbitItem }) {
   if (/React/.test(item.name)) return <svg viewBox="-12 -12 24 24" width="25" height="25" fill="none" stroke="currentColor" aria-hidden="true"><circle r="1.8" fill="currentColor" stroke="none" />{[0, 60, 120].map(angle => <ellipse key={angle} rx="11" ry="4.3" transform={`rotate(${angle})`} strokeWidth="1.1" />)}</svg>;
-  const marks: Record<string, string> = { "Node.js": "JS", "TypeScript": "TS", "JavaScript": "JS", "Python": "Py", "Django": "dj", "PHP": "php", "Laravel": "L", "Next.js": "N", "n8n": "n8n", "AWS": "aws" };
+  const marks: Record<string, string> = {
+    "Node.js": "JS", "TypeScript": "TS", "JavaScript": "JS",
+    "Python": "Py", "FastAPI": "FA", "Django": "dj", "Flask": "Fl",
+    "Laravel": "L", "Next.js": "N", "n8n": "n8n", "AWS": "aws",
+    "LangChain": "LC", "LangGraph": "LG", "OpenAI": "AI",
+  };
   if (marks[item.name]) return <span className={`tech-letter ${item.name === "Node.js" ? "tech-hex" : ""}`}>{marks[item.name]}</span>;
-  const Icon = item.category === "Database" ? Database : item.category === "Cloud & Deployment" ? Cloud : item.category === "AI & Automation" || item.category === "APIs & Integrations" ? Workflow : item.category === "Development Tools" ? GitBranch : item.category === "Mobile Development" ? Smartphone : item.category === "Backend Engineering" ? Braces : Code2;
+  const Icon = item.category === "Databases & Async" ? Database : item.category === "Cloud, DevOps & Testing" ? Cloud : item.category === "Workflow Automation" || item.category === "AI, GenAI & RAG" ? Workflow : item.category === "Mobile & Secondary" ? Smartphone : item.category === "Python & Backend" ? Braces : Code2;
   return <Icon size={23} strokeWidth={1.6} aria-hidden="true" />;
 }
 
@@ -89,6 +97,6 @@ export default function TechOrbit({ items, portrait = false, label, onSelect }: 
       </li>)}
     </ul>
     {!reduceMotion && <button type="button" className="orbit-pause" onClick={() => setPaused(!paused)} aria-label={paused ? "Play technology animation" : "Pause technology animation"}>{paused ? <Play size={13} /> : <Pause size={13} />}{paused ? "Play" : "Pause"}</button>}
-    {portrait && <div className="portrait-caption"><span /> Available for opportunities</div>}
+    {portrait && <div className="portrait-caption"><span /> Open to Remote Roles Only</div>}
   </div>;
 }
